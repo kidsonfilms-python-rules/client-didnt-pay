@@ -1,0 +1,17 @@
+{
+  "name": "client-didnt-pay",
+  "version": "1.0.0",
+  "description": "Client isn't paying? This will make the website slowly disappear until they do.",
+  "main": "clientdidntpay.js",
+  "scripts": {
+    "test": "echo Tests not yet made",
+    "start": "node clientdidntpay.js"
+  },
+  "author": "Siddharth Ray",
+  "license": "MIT",
+  "dependencies": {
+    "Console": "^1.1.0",
+    "javascript-obfuscator": "^2.18.1",
+    "prompts": "^2.4.1"
+  }
+}
